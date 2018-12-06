@@ -43,8 +43,7 @@ namespace DAL.Repositories
                 throw ex;
             }
             return true;
-        }
-
+        }   
         public TeacherRepository(tkbremake4DbContext context) : base(context)
         {
         }

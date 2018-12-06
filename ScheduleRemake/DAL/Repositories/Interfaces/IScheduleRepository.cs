@@ -13,5 +13,8 @@ namespace DAL.Repositories.Interfaces
         string GetAllSchedule();
         bool AddSchedules(List<Tkb> schedules);
         bool DeleteSchedules();
+        bool SaveSchedules(List<Tkb> schedules);
+        bool SaveTeacherSchedules(List<Tkb> schedules);
+        bool SaveClassSchedules(List<Tkb> schedules);
     }
 }

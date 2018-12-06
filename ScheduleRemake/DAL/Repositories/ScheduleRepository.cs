@@ -76,6 +76,92 @@ namespace DAL.Repositories
             }
             return true;
         }
+
+        public bool SaveSchedules(List<Tkb> schedules)
+        {
+            List<Tkb> NewSchedules = new List<Tkb>();
+            for (int i = 0; i < schedules.Count; i++)
+            {
+                var FoundSchedule = (from s in _appContext.Tkb where schedules[i].Hieuluc == s.Hieuluc && schedules[i].Id == s.Id select s).ToList();
+                if (FoundSchedule.Count == 0)//ko trung
+                {
+                    NewSchedules.Add(FoundSchedule[0]);
+                }
+                else//trung
+                {
+                    _appContext.Tkb.Remove(FoundSchedule[0]);//xoa cai da ton tai
+                    NewSchedules.Add(schedules[i]);// add lai cai moi
+                }                
+            }
+            try
+            {
+                _appContext.Tkb.AddRange(NewSchedules);
+                _appContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            return true;
+        }
+        public bool SaveTeacherSchedules(List<Tkb> schedules)
+        {
+            List<Tkb> NewSchedules = new List<Tkb>();//dung de them nhung cai moi vao, cuoi cung bo vao db
+            for (int i = 0; i < schedules.Count; i++)
+            {
+                var FoundSchedule = (from s in _appContext.Tkb where schedules[i].Hieuluc == s.Hieuluc && schedules[i].Id == s.Id && schedules[i].Gv == s.Gv select s).ToList();
+                if (FoundSchedule.Count == 0)//ko trung
+                {
+                    NewSchedules.Add(FoundSchedule[0]);
+                }
+                else//trung
+                {
+                    _appContext.Tkb.Remove(FoundSchedule[0]);//xoa cai da ton tai
+                    NewSchedules.Add(schedules[i]);// add lai cai moi
+                }
+            }
+            try
+            {
+                _appContext.Tkb.AddRange(NewSchedules);
+                _appContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            return true;
+        }
+
+        public bool SaveClassSchedules(List<Tkb> schedules)
+        {
+            List<Tkb> NewSchedules = new List<Tkb>();//dung de them nhung cai moi vao, cuoi cung bo vao db
+            for (int i = 0; i < schedules.Count; i++)
+            {
+                var FoundSchedule = (from s in _appContext.Tkb where schedules[i].Hieuluc == s.Hieuluc && schedules[i].Id == s.Id && schedules[i].L == s.L select s).ToList();
+                if (FoundSchedule.Count == 0)//ko trung
+                {
+                    NewSchedules.Add(FoundSchedule[0]);
+                }
+                else//trung
+                {
+                    _appContext.Tkb.Remove(FoundSchedule[0]);//xoa cai da ton tai
+                    NewSchedules.Add(schedules[i]);// add lai cai moi
+                }
+            }
+            try
+            {
+                _appContext.Tkb.AddRange(NewSchedules);
+                _appContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            return true;
+        }
         #endregion
     }
 }

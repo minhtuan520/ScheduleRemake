@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using DAL;
+using DAL.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -64,6 +65,41 @@ namespace ScheduleRemake.Controllers
                         }
                     default: return BadRequest("ERROR");
                 }
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
+        [HttpPut]
+        [Route("Save/{table}")]
+        public IActionResult Save(string table,[FromBody]List<Tkb> data)
+        {
+            if (ModelState.IsValid)
+            {
+                if (string.IsNullOrWhiteSpace(table)||data==null||data.Count == 0)
+                    return BadRequest("table or data cannot be null or empty");
+                bool result = false;
+                switch (table)
+                {
+                    case "Schedule":
+                        {                            
+                            result = _unitOfWork.TKB.SaveSchedules(data);
+                            break;
+                        }
+                    case "TeacherSchedule":
+                        {
+                            result = _unitOfWork.TKB.SaveTeacherSchedules(data);
+                            break;
+                        }
+                    case "ClassSchedule":
+                        {
+                            result = _unitOfWork.TKB.SaveClassSchedules(data);
+                            break;
+                        }                    
+                    default: return BadRequest("ERROR");
+                }
+                return Ok(result);                
             }
             else
             {

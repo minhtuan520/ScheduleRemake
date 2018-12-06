@@ -10,5 +10,6 @@ namespace DAL.Repositories.Interfaces
         List<Giaovien> GetTeacher();
         bool AddTeachers(List<Giaovien> teachers);
         bool DeleteTeacher();
+        
     }
 }

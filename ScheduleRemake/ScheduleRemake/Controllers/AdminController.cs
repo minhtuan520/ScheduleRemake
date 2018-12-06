@@ -43,10 +43,6 @@ namespace ScheduleRemake.Controllers
         [Route("Solve")]
         public bool Solve_ver2(int tongtiet)
         {
-            //string user = Request.Cookies["User"];
-            //if (user == null) Response.Redirect("/Login");
-            //else if (user != "admin") Response.Redirect("/Error/200");
-
             if (ready)
             {
                 ready = false;
