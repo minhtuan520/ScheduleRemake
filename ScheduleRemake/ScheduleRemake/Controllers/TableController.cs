@@ -4,14 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL;
 using DAL.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using OpenIddict.Validation;
 
 namespace ScheduleRemake.Controllers
 {
     [Route("api/Table")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = OpenIddictValidationDefaults.AuthenticationScheme)]
     public class TableController : ControllerBase
     {
         #region Declare
