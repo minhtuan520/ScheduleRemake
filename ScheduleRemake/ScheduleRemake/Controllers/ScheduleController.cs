@@ -15,7 +15,7 @@ namespace ScheduleRemake.Controllers
 {
     [Route("api/Schedule")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = OpenIddictValidationDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = OpenIddictValidationDefaults.AuthenticationScheme)]
     public class ScheduleController : ControllerBase
     {
         #region Declare
