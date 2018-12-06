@@ -85,7 +85,7 @@ namespace DAL.Repositories
                 var FoundSchedule = (from s in _appContext.Tkb where schedules[i].Hieuluc == s.Hieuluc && schedules[i].Id == s.Id select s).ToList();
                 if (FoundSchedule.Count == 0)//ko trung
                 {
-                    NewSchedules.Add(FoundSchedule[0]);
+                    NewSchedules.Add(schedules[i]);
                 }
                 else//trung
                 {
@@ -113,7 +113,7 @@ namespace DAL.Repositories
                 var FoundSchedule = (from s in _appContext.Tkb where schedules[i].Hieuluc == s.Hieuluc && schedules[i].Id == s.Id && schedules[i].Gv == s.Gv select s).ToList();
                 if (FoundSchedule.Count == 0)//ko trung
                 {
-                    NewSchedules.Add(FoundSchedule[0]);
+                    NewSchedules.Add(schedules[i]);
                 }
                 else//trung
                 {
@@ -142,7 +142,7 @@ namespace DAL.Repositories
                 var FoundSchedule = (from s in _appContext.Tkb where schedules[i].Hieuluc == s.Hieuluc && schedules[i].Id == s.Id && schedules[i].L == s.L select s).ToList();
                 if (FoundSchedule.Count == 0)//ko trung
                 {
-                    NewSchedules.Add(FoundSchedule[0]);
+                    NewSchedules.Add(schedules[i]);
                 }
                 else//trung
                 {
