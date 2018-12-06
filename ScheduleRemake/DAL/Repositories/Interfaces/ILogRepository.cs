@@ -10,5 +10,7 @@ namespace DAL.Repositories.Interfaces
         List<Log> GetLogClass(string Hieuluc, int Id, string L);
         List<Log> GetLogTeacher(string Hieuluc, int Id, string Gv);
         List<Log> GetLog(string Hieuluc, int Id);
+        bool AddLogs(List<Log> logs);
+        bool DeleteLogs();
     }
 }

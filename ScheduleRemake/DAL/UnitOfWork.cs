@@ -27,12 +27,13 @@ namespace DAL
         private IChangeRepository _change;
         private ILogRepository _log;
         private IScheduleRepository _schedule;
-        #endregion
-
         public UnitOfWork(tkbremake4DbContext context)
         {
             _context = context;
         }
+        #endregion
+
+
         #region extract
         public IChangeRepository ThayDoi
         {
@@ -123,7 +124,7 @@ namespace DAL
 
                 return _schedule;
             }
-        }
+        }        
         #endregion
 
         //public int SaveChanges()

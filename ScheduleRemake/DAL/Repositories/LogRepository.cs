@@ -18,7 +18,7 @@ namespace DAL.Repositories
             {
                 return (tkbremake4DbContext)_context;
             }
-        }
+        }      
         #endregion
         #region Function
 
@@ -57,6 +57,27 @@ namespace DAL.Repositories
                                 select log).ToList();
             return result;
         }
+        public bool AddLogs(List<Log> logs)
+        {
+            _appContext.Log.AddRange(logs);
+            return true;
+        }
+
+        public bool DeleteLogs()
+        {
+            try
+            {
+                _appContext.Log.RemoveRange(from log in _appContext.Log where log.Hieuluc == "" select log);
+                _appContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            return true;
+        }
+
         #endregion
     }
 }

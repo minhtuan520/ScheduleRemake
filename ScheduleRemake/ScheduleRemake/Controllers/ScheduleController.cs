@@ -18,7 +18,7 @@ namespace ScheduleRemake.Controllers
         readonly ILogger _logger;
         #endregion
         #region Constructer
-        public ScheduleController(IUnitOfWork unitOfWork, ILogger<LogController> logger)
+        public ScheduleController(IUnitOfWork unitOfWork, ILogger<ScheduleController> logger)
         {
             _unitOfWork = unitOfWork;
             _logger = logger;

@@ -11,5 +11,7 @@ namespace DAL.Repositories.Interfaces
         string GetTeacherSchedule(string Hieuluc, int Id, string Gv);
         string GetSchedule(string Hieuluc, int Id);
         string GetAllSchedule();
+        bool AddSchedules(List<Tkb> schedules);
+        bool DeleteSchedules();
     }
 }

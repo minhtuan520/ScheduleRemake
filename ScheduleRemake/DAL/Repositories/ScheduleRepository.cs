@@ -56,7 +56,26 @@ namespace DAL.Repositories
                     where r.Hieuluc == Hieuluc && r.Id == Id && r.Gv == Gv
                     select r);
         }
+        public bool AddSchedules(List<Tkb> schedules)
+        {
+            _appContext.Tkb.AddRange(schedules);
+            return true;
+        }
 
+        public bool DeleteSchedules()
+        {
+            try
+            {
+                _appContext.Tkb.RemoveRange(from tkb in _appContext.Tkb where tkb.Hieuluc == "" select tkb);
+                _appContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            return true;
+        }
         #endregion
     }
 }
