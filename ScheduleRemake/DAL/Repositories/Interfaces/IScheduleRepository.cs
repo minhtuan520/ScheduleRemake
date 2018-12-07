@@ -9,7 +9,7 @@ namespace DAL.Repositories.Interfaces
     {
         string GetClassSchedule(string Hieuluc, int Id, string L);
         string GetTeacherSchedule(string Hieuluc, int Id, string Gv);
-        string GetSchedule(string Hieuluc, int Id);
+        List<Tkb> GetSchedule(string Hieuluc, int Id);
         string GetAllSchedule();
         bool AddSchedules(List<Tkb> schedules);
         bool DeleteSchedules();
