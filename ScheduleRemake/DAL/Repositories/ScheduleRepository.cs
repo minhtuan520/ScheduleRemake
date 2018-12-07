@@ -39,13 +39,13 @@ namespace DAL.Repositories
                 select r);
 
         }
-        public string GetSchedule(string Hieuluc, int Id)
+        public List<Tkb> GetSchedule(string Hieuluc, int Id)
         {
             if (Hieuluc == null) Hieuluc = "";
-            return Newtonsoft.Json.JsonConvert.SerializeObject(
+            return (
                     from r in _appContext.Tkb
                     where r.Hieuluc == Hieuluc && r.Id == Id
-                    select r);
+                    select r).ToList();
         }
 
         public string GetTeacherSchedule(string Hieuluc, int Id, string Gv)
@@ -58,10 +58,12 @@ namespace DAL.Repositories
         }
         public bool AddSchedules(List<Tkb> schedules)
         {
-            try { 
+            try
+            {
                 _appContext.Tkb.AddRange(schedules);
                 _appContext.SaveChanges();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return false;
             }
@@ -97,7 +99,7 @@ namespace DAL.Repositories
                 {
                     _appContext.Tkb.Remove(FoundSchedule[0]);//xoa cai da ton tai
                     NewSchedules.Add(schedules[i]);// add lai cai moi
-                }                
+                }
             }
             try
             {
