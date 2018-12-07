@@ -23,7 +23,7 @@ using OpenIddict.Validation;
 namespace ScheduleRemake.Controllers
 {
     [Authorize(AuthenticationSchemes = OpenIddictValidationDefaults.AuthenticationScheme)]
-    [Route("api/[controller]")]
+    [Route("api/Account")]
     public class AccountController : Controller
     {
         private readonly IAccountManager _accountManager;
