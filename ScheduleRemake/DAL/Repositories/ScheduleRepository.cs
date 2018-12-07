@@ -58,7 +58,13 @@ namespace DAL.Repositories
         }
         public bool AddSchedules(List<Tkb> schedules)
         {
-            _appContext.Tkb.AddRange(schedules);
+            try { 
+                _appContext.Tkb.AddRange(schedules);
+                _appContext.SaveChanges();
+            } catch (Exception ex)
+            {
+                return false;
+            }
             return true;
         }
 

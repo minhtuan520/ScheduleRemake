@@ -59,7 +59,15 @@ namespace DAL.Repositories
         }
         public bool AddLogs(List<Log> logs)
         {
-            _appContext.Log.AddRange(logs);
+            try
+            {
+                _appContext.Log.AddRange(logs);
+                _appContext.SaveChanges();
+            } catch (Exception ex)
+            {
+                return false;
+            }
+            
             return true;
         }
 

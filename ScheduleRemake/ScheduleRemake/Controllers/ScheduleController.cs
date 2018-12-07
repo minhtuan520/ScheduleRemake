@@ -32,7 +32,7 @@ namespace ScheduleRemake.Controllers
         #region API
         [HttpGet]
         [Route("Get/{table}")]
-        public IActionResult Get(string table, string HieuLuc = null, int Id = -1, string Lop = null, string GV = null)
+        public IActionResult Get(string table, string HieuLuc = "", int Id = -1, string Lop = null, string GV = null)
         {
             if (ModelState.IsValid)
             {
@@ -42,7 +42,7 @@ namespace ScheduleRemake.Controllers
                 {
                     case "Schedule":
                         {
-                            if (string.IsNullOrWhiteSpace(HieuLuc) || Id == -1)
+                            if (Id == -1)
                                 return BadRequest("variable cannot be null or empty");
                             return Ok(_unitOfWork.TKB.GetSchedule(HieuLuc, Id));
                         }

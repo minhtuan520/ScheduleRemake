@@ -39,7 +39,7 @@ namespace ScheduleRemake.Controllers
         }
         #endregion
         #region API
-        [HttpPost]
+        [HttpGet]
         [Route("Solve")]
         public bool Solve_ver2(int tongtiet)
         {
